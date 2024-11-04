@@ -1,3 +1,55 @@
 
                           #Alineamiento de globinas#
+
+
 #cargar los paquetes
+library(BSgenome)
+library(BiocIO)
+library(GenomicRanges)
+library(rtracklayer)
+library(msa)
+
+#agregar el archivo al doc
+
+globinas<-readDNAStringSet("datos/DivergentGlobins.fasta")
+globinas
+
+#alineamiento
+
+clustal_globinas<-msa(globinas,method = "ClustalW")
+clustal_globinas
+
+muscle_globinas<-msa(globinas, method = "Muscle")
+muscle_globinas
+
+#árboles
+
+#cargar el paquete
+
+library(ape)
+
+install.packages("seqinr")
+library(seqinr)
+
+#Cambiar el tipo de objeto#
+
+globinas1<-msaConvert(clustal_globinas,type="seqinr::alignment")
+globinas1
+
+
+globinas2<-msaConvert(muscle_globinas,type="seqinr::alignment")
+globinas2
+
+#hacer las matrices de distancias
+mat1<-dist.alignment(globinas1)
+mat2<-dist.alignment(globinas2)
+  
+#árbol#
+pdf("resultado/arboles.pdf")
+
+arbol1<-nj(mat1)#con clustalw
+arbol1
+arbol2<-nj(mat2)#con muscle
+arbol2
+
+dev.off()

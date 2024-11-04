@@ -1,26 +1,24 @@
 {
-    "id": "60E8B23B",
-    "path": "~/bioinfo_segundo_parcial/Ejercicios_bioinfo/globinas_alineamiento.R",
+    "id": "DCEB46B3",
+    "path": "~/bioinfo_segundo_parcial/Tareas_bionfo/Tarea 2/Osornio_Blanca_T2_P5.R",
     "project_path": null,
     "type": "r_source",
     "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1730755201647.0,
+    "created": 1730756112438.0,
     "source_on_save": false,
-    "relative_order": 4,
+    "relative_order": 8,
     "properties": {
         "source_window_id": "",
-        "Source": "Source",
-        "cursorPosition": "23,0",
-        "scrollLine": "8"
+        "Source": "Source"
     },
     "folds": "",
-    "lastKnownWriteTime": 1728331617,
+    "lastKnownWriteTime": 1728318932,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1728331617,
+    "last_content_update": 1728318932,
     "read_only": false,
     "read_only_alternatives": []
 }

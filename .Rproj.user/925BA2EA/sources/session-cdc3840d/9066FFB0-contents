@@ -1,0 +1,80 @@
+
+
+                               ####Jurassic Park####
+ 
+                               library(XVector)
+                               library(GenomeInfoDb)
+                               library(BiocManager)#cargar paquetes que podría usar
+                               library(Biostrings)                    
+                               library(rtracklayer)
+                               library(msa)                    
+                               library(BiocIO)
+                               library(GenomicRanges)  
+                               library(stats)
+                               if (!require("BiocManager", quietly = TRUE))
+                                 install.packages("BiocManager")
+                               
+                               BiocManager::install("ggtree")
+                               library(ggtree)
+                               
+dino<-readDNAStringSet("C:/Users/52427/OneDrive - UAQ/Documentos/bioinfo_segundo_parcial/Tareas_bionfo/Tarea 2/Archivos/DinoJurassic.fna")                              
+dino
+
+#Porcenataje de GC
+
+GC<-letterFrequency (dino, "GC")
+GC
+ATCG<-letterFrequency(dino,"ATGC")
+ATCG
+porcentaje<- GC*100/ATCG #Regla de tres
+porcentaje
+
+#Blastear y explicación
+
+pdf("C:/Users/52427/OneDrive - UAQ/Documentos/bioinfo_segundo_parcial/Tareas_bionfo/Tarea 2/Archivos/opinion.pdf")
+
+print("La secuencia tiene porcentajes de identidad más altos con vectores de clonación,
+      vectores sintéticos, algunas bacterias y virus. Se esperaría que esos valores
+      pertenecieran a aves pues la idea de que las aves son los parientes más cercanos
+      de los dinosaurios lleva un tiempo circulando, sin embargo, se llegó a estas conclusiones por 
+      evidencias estructurales principalmente de tejido óseo, método que los hace similares
+      también a mamíferos(Renserbg at.al, 2000).
+      Es dificil tener DNA de dinosaurio para secuenciar, pero, se ha encontrado que en DNA de
+      un dinosaurio en Xixia no hay homología con procariotas pero si con plantas y hongos. En
+      BLAST, encontramos algunas levaduras con identidades del 87.80%.Tal vez que halla tantos vectores
+      de clonación va de acuerdo con la idea que es un DNA sintético, modificado para cumplir
+      con las demandas del público que atraé el parque(Wang,1996).
+      Mi conclusión es que solo pegaron distintas seuencias sin demasiado detalle.
+      Bibliografía
+      Rensberger, J. M., & Watabe, M. (2000). Fine structure of bone in dinosaurs, birds and mammals. Nature, 406(6796), 619-622. https://doi.org/10.1038/35020550
+Wang, H. (1996). [Re-analysis of DNA sequence data from a dinosaur egg fossil unearthed in Xixia of Henan Province]. Yi Chuan Xue Bao = Acta Genetica Sinica, 23(3), 183-189.") 
+
+#Gráfica del e-value
+e_value<-rep(1**-116,10)#Mismo e-value para todas las secuencias
+
+n<-c("pET151","Chimeric dengue virus type 1 vector p4-D1L-CME"," pBR939b","pLW1","pAT153HIL2","pXZ240","BBa_J96007",
+     "pPL-Lambda","pAS1-tet","pACTEM1")
+names(e_value)<-n
+
+plot(e_value)
+
+
+#Árbol filogenético
+library(stats)
+cercanos<-readDNAStringSet("C:/Users/52427/OneDrive - UAQ/Documentos/bioinfo_segundo_parcial/Tareas_bionfo/Tarea 2/Archivos/sequence (1).fasta")
+
+datitos2<-c(cercanos,dino)
+datitos2
+
+val<-alphabetFrequency(datitos2)
+
+datitos3<-val[ ,c(1:4)]
+
+matriz_dist<-dist(datitos3, method = "euclidean", diag = FALSE, upper = FALSE, p = 2)
+matriz_dist
+
+hc2<-hclust(matriz_dist)
+
+plot(hc2)#dendograma
+
+dev.off()#Apaga el cambio de salida

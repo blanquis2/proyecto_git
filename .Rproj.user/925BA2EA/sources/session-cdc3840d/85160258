@@ -3,9 +3,9 @@
     "path": "~/proyecto_git/script/globinas1.R",
     "project_path": "script/globinas1.R",
     "type": "r_source",
-    "hash": "0",
+    "hash": "1361630713",
     "contents": "",
-    "dirty": true,
+    "dirty": false,
     "created": 1730754708687.0,
     "source_on_save": false,
     "relative_order": 2,
@@ -13,15 +13,15 @@
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "24,8",
-        "scrollLine": "5"
+        "cursorPosition": "54,0",
+        "scrollLine": "36"
     },
     "folds": "",
-    "lastKnownWriteTime": 1730754758,
+    "lastKnownWriteTime": 1730757376,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1730755600350,
+    "last_content_update": 1730757376939,
     "read_only": false,
     "read_only_alternatives": []
 }

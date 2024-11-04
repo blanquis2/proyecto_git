@@ -1,0 +1,95 @@
+
+                              ###Eigenvalores###
+
+mat<-matrix(sample(1:500,4),nrow = 2) #Matriz con números aleatorios (entre 1 y 500)#
+mat
+
+###Traza (a)
+
+traza<-mat[1,1]+mat[2,2]
+traza
+print(paste("La traza es de:",traza))#Uso de paste para unir distintos elementos:texto y un objeto#
+
+###Determinante (b)
+
+det<-(mat[1,1]*mat[2,2])-(mat[2,1]*mat[1,2])
+det
+print(paste("La traza es de:",det))
+
+###Eigenvalores (c)
+
+detA3<-(mat[1,1]*mat[2,2])+(-(mat[2,1]*mat[1,2]))#tercer valor de la ecuación, coincide con det,
+#pero me evita confusión
+detA3
+
+detA2<-(mat[1,1]*-1)+(mat[2,2]*-1)#segundo valor de la ecuación
+detA2
+
+#En lugar de factorizar, usamos fórmula general#
+
+sol1<-((-detA2)+ #Cuando se suma#
+  (sqrt(detA2^2-4*detA3))/2)
+sol1
+
+sol2<-((-detA2)- #Cuando se resta#
+         (sqrt(detA2^2-4*detA3))/2)
+sol2
+
+print(paste("Los eigenvalores son:",sol1,"y",sol2))
+
+#Estabilidad: tipo y clase (d)
+
+if(det<0){
+  print("Es un punto silla")
+}else if (traza<0){
+  print("Es estable")
+}else if (traza>0){
+  print("Es inestable")
+}else if ((traza^2-4*det)>0 & traza<0){
+  print("Es un atractor")
+}else if ((traza^2-4*det)<0 & traza<0){
+  print("Es un atractor espiral")
+}else if (traza>0 & (traza^2-4*det)>0){
+  print("Es un respulsor")
+}else if (traza>0 & (traza^2-4*det)<0){
+  print("Es un respulsor espiral")
+}
+
+#Tipo y clase de estabilidad a partir de los eigenvalores (e)#
+
+if(sol1<0 & sol2<0){
+  print("Nodo atractor, estable")
+}else if (sol1>0 & sol2>0){
+  print("Nodo repulsor, inestable")
+}else if (sol1<0 & sol2>0){
+  print("Es un punto silla")
+}else if (sol1==sol2<0){
+  print("Es atractor") 
+}else if (sol1==solo2>0){
+  print("Es un repulsor")  
+}
+
+# (f)
+
+matrices<-(matrix(x,nrow = 2))
+x<-sample(1:1000000)
+
+rep(matrices,100)#No da resultado#
+
+for (x in matrices) {
+  repeat(matrix(x,nrow = 2))
+}
+
+matrices#tal vez con bucles#
+
+repeat{
+  matrices <- matrices + 1
+  if(matrices == 100) {
+    break
+  }
+}
+
+matrices
+x <- 0
+while(x >! 100) {x <- (matrix(x,nrow = 2)*2;
+                       print(x)}

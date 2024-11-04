@@ -1,0 +1,76 @@
+
+                    #######Alineamiento de secuencias#######
+                    
+library(XVector)
+library(GenomeInfoDb)
+library(BiocManager)#cargar paquetes
+library(Biostrings)                    
+library(rtracklayer)
+library(msa)                    
+library(BiocIO)
+library(GenomicRanges)                    
+                    
+bcr1<-readDNAStringSet("C:/Users/52427/OneDrive - UAQ/Documentos/bioinfo_segundo_parcial/Tareas_bionfo/Tarea 2/Archivos/BRCA1_refseq_transcript.fasta")                    
+bcr1
+
+alphabetFrequency(bcr1) #Solo contienen A,C,G,T
+
+#Secuencia GATTACA#
+
+vmatchPattern("GATTACA", bcr1)->GATTACA
+#Nota:LetterFrecuency no admite letras repetidas y subseq requiere saber inicio y final del patrón
+GATTACA
+
+vcountPattern("GATTACA", bcr1)->GATTACA_no
+GATTACA_no #Solo aparece una vez en la tercera secuencia#
+
+vcountPattern("GATTACA", bcr1,max.mismatch=1)->GATTACA_no_error
+GATTACA_no_error#Con un mismatch de 1:5 15  5  7 11, respectivamente#
+
+#Traducción
+
+traduccion<-translate(bcr1)
+traduccion
+
+nombres<-c("humano","mus","taurus","gallus","canis")#acceder más fácil#
+names(traduccion)<-nombres
+
+#hacer un "recorte"
+traduccion$humano<-substr(traduccion$humano, 1, 1801)
+traduccion$mus<-substr(traduccion$mus, 1, 1801)
+traduccion$taurus<-substr(traduccion$taurus, 1, 1801)
+traduccion$gallus<-substr(traduccion$gallus, 1, 1801)
+traduccion$canis<-substr(traduccion$canis, 1, 1801)
+
+#volver a imprimir traduccion
+traduccion #Ahora todos tienen el mismo tamaño, necesario para la matriz de distancias
+
+#Alineamientos
+
+albcr<-msa(traduccion,method = "ClustalW")
+albcr
+
+albcr2<-msa(traduccion,method = "ClustalOmega")
+albcr2
+
+albcr3<-msa(traduccion,method = "Muscle")
+albcr3
+
+#Matriz de distancia
+
+library(stats)#aquí vive la función dist()
+
+dat<-alphabetFrequency(traduccion)#Matriz numérica para mat de distancias#
+dat
+datitos<-dat[ ,-c(21:26,28:30)]#Quitar 0´s#
+datitos
+mat_dist<-dist(datitos, method = "euclidean", diag = FALSE, upper = FALSE, p = 2)
+mat_dist
+
+#Árbol filogenetico
+
+hc <- hclust(mat_dist)
+hc
+
+plot(hc)#Con el análsis de clúster hacemos un dendograma
+upgma(mat_dist, method = "average")

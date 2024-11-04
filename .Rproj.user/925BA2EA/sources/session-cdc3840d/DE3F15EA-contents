@@ -1,0 +1,26 @@
+
+                       ######Calificaciones #######
+
+parciales<-c(6,8,8) 
+tareas_quincenales<-c(7,4,8,7,9,6,10,4,9,8)
+
+#porcentajes
+pparciales<-(mean(parciales)*50)/10
+ptareas_quincenales<-(mean(tareas_quincenales)*30)/10
+pproyecto<-10
+pexpo<-5
+ppart<-5
+pextras<-5
+
+#calificación 
+
+calif<-(pparciales+ptareas_quincenales+pproyecto+pexpo+ppart+pextras)/10
+calif
+
+#¿Estás excentx?
+
+if(pparciales<30){
+  print("Estás en final, tus parciales no fueron aprobatorios, ¡ánimo, tienes oportunidad!")
+}else if(calif>=7){
+  print("Es oficial, estás excento,¡Lo lograste!")
+}

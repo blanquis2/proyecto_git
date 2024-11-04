@@ -1,0 +1,323 @@
+
+
+                              ####Funciones en R####
+                              
+                              
+#Sintaxis
+                              su<-function(arg1,arg2...){
+     #cuerpo de la función que va atrabajar on lo que le pones dentro de los parentesis
+                              resultado <-arg1+arg2
+                              return(resultado)}
+                              
+#Ejercicio: operaciones aritmeticas
+
+suma<-function(x,y){
+  resultado<-x+y
+  return(resultado)
+}                                                            
+
+suma(34,12)
+
+resta<-function(x,y){
+  resultado<-x-y
+  return(resultado)
+}                                                            
+
+resta(34,12)
+
+
+multi<-function(x,y,z){
+  resultado<-x*y*z
+  return(resultado)
+}                                                            
+
+multi(34,12,3)
+
+div<-function(x,y){
+  if(x==0 | y== 0){
+    print("No se puede :(")
+  }else if (y != 0 & x != 0){
+    resultado<-x/y
+    }
+  return(resultado)
+}                                                            
+div(34,12)
+
+##Función source(), te ayuda a recordar funciones descritas en otro script##
+
+#Ejercicio con operación cuadrática#
+
+cuadri<-function(a,b,c){
+  d<-b^2-4*a*c
+  if(d>0){
+    solucion1<-(-b)+(sqrt(abs(b^2-4*a*c))/(2*a))
+    solucion2<-(-b)-(sqrt(abs(b^2-4*a*c)/(2*a))) 
+    print(paste("Ambas soluciones son reales:", solucion1,solucion2))
+  }else if (d<0){
+    print("No hay solución en los números reales")
+    print("La raíz pertenece a los números complejos, es decir,la solución de compone de un imaginario y reales")
+  }else if (d == 0){
+    print(paste("Solo hay una solución para la ecuación", solucion1))
+    print("La raiz de cada una de las soluciones es la misma")
+  }  
+}
+cuadri(2,7,8)
+
+#Ejercicios
+
+uno<-function(vectorin){
+  mean(vectorin)#no sale
+}
+uno(vectorin)
+vectorin<-c(5:20)
+
+dos<-function(mat4){
+  return(det(mat4))
+}
+dos(matrix(sample(30:59,4),nrow = 2))
+
+#porcentaje de GC#
+
+library(XVector)
+library(GenomeInfoDb)
+library(BiocManager)#cargar paquetes
+library(Biostrings)                    
+library(rtracklayer)
+library(msa)                    
+library(BiocIO)
+library(GenomicRanges)                    
+
+#12
+bcr1<-readDNAStringSet("Ejercicios_bioinfo/datos/BRCA1_refseq_transcript.fasta")                    
+
+porcentaje<-function(bcr1){
+  GC<-letterFrequency (bcr1, "GC")
+  ATCG<-letterFrequency(bcr1,"ATGC")
+  return(GC*100/ATCG)
+}
+porcentaje(bcr1)
+
+#Ciclos
+
+#Dos clases de ciclos
+
+#Ciclo for 
+
+for (i in 3:90) {
+  print("Robaré los necesarios para salvar esta compañia")
+  print("Si al hablar no has de agradar es mejor callar")
+
+}
+
+##Ejercio excusas##
+
+#Borrador
+ex<-function(excusas){
+  excusas[sample(2:34,1), 1]->p
+  excusas[sample(2:34,1), 2]->s
+  excusas[sample(2:34,1), 3]->t#si no incluyes las variables en el ciclo for,
+  #hará 10 veces lo mismo
+  for (i in 1:10) {
+    print(paste(p, s,t))
+  }
+}
+#file.choose: te dice donde etá una variable
+#Si agregas dim a los objetos sample lo hará independiente de las modificaciones que
+#se le hagan al data.frame
+
+ex(excusas)
+
+#Borrador
+excusas[sample(2:34,1), 1]->p
+excusas[sample(2:34,1), 2]->s
+excusas[sample(2:34,1), 3]->t
+
+for (i in 1:10) {
+    print(paste(p, s,t))
+  }
+
+for (i in 1:23) {
+  print(paste(import[i, 1], "tiene ", import[i,2], "y le gusta el color ", import[i,3]))
+}
+
+#Oficial
+excusas
+ex<-function(excusas){
+  for (i in 1:10) {
+    excusas[sample(2:34,1), 1]->p
+    excusas[sample(2:34,1), 2]->s
+    excusas[sample(2:34,1), 3]->t
+    print(paste(p, s,t))
+  }
+}
+ex(excusas)
+
+#Función del 2 al 10 que imprima la tabla del 2 al 10#
+
+multi<-function(){
+  for (i in 1:10) {
+  print(i*(1:10))
+  }
+}
+multi()
+
+##Para sacar el factorial de un número
+factorial <- function(n) {
+  if (n == 0) {
+    return(1)
+  } else {
+    return(n * factorial(n - 1))
+  }
+}
+num<-8
+resultado<-factorial(num)
+resultado
+
+factorial <- function(n) {
+  if (n == 0) {
+    return(1)
+  } else {
+    return(n * factorial(n - 1))
+  }
+}
+
+for (var in 1:10){
+  return(paste(var* for (i in 1:10){
+  })
+}  
+
+
+                                #####Ciclo while#####
+
+#No sabemos cuantas veces se va a repetir sino que depende de una condición que debe ser verdadera#
+#Para que se ejecute el valor de la función#
+
+#Errores:
+#*No asignar las condicones
+#*que la condición siempre se cumpla o que la condición nunca se cumpla
+
+#Ejemplo
+
+num_mensaje<-2
+
+while (num_mensaje<=10) { #Solo imprime una frase 
+  print(paste("La cumbia epistemológica",num_mensaje))
+  num_mensaje<-num_mensaje+1
+}
+
+while (num_mensaje<=10) {  ##Corre infinito##
+  print(paste("La cumbia epistemológica",num_mensaje))
+}
+
+while (num_mensaje<=10) { #Lo repite hasta que llega a 10#
+  num_mensaje<-num_mensaje+1
+  print(paste("La cumbia epistemológica",num_mensaje))
+}
+
+#Suma de los primeros números naturales#
+
+suma<-1
+while(suma<100){
+  suma1<-suma+1
+  naturales<-suma+suma1
+  suma<-
+  print(paste(naturales))
+}
+
+suma<-0
+numero<-1
+
+while(suma<100){
+  numero<-suma+1
+  suma<-numero+1+suma
+  print(paste(suma))
+}
+
+while(suma<100){#corregir#
+  suma<-numero+1+suma
+  numero<-suma+1
+  print(suma)
+}
+
+#10, 9, 8, 7... mensaje inverso#
+
+num<-1:5
+num
+#ANITA COME SOPA CON CUHCARA#
+names(num)<-c("cuchara","con","sopa","come","Anita")
+n<-sort(num,decreasing = TRUE)[1:5]
+n
+l<-length(num)
+
+while (l==5) {#esto da infinito
+  num<-sort(num,decreasing = TRUE)[1:5]
+  num<-l+1
+  print(num)
+}
+
+while (l==5) {
+  num<-sort(num,decreasing = TRUE)[1:5]
+  num<-l-1
+}
+###excusas###
+
+excusas
+
+
+excusas[sample(2:34,1), 1]->p
+excusas[sample(2:34,1), 2]->s
+excusas[sample(2:34,1), 3]->t
+
+oracion<-1
+
+while(oracion<5){
+  oracion<-oracion+1
+  print(paste(p,s,t))
+}
+
+
+while (oracion<5) {
+    excusas[sample(2:34,1), 1]->p
+    excusas[sample(2:34,1), 2]->s
+    excusas[sample(2:34,1), 3]->t
+    oracion<-oracion+1
+    print(paste(p, s,t))
+  }
+
+#Con un fasta#
+
+library(BiocManager)#cargar paquetes
+library(Biostrings)                    
+library(rtracklayer)
+library(msa)                    
+library(BiocIO)
+library(GenomicRanges)
+library(XVector)
+library(GenomeInfoDb)
+library(BSgenome)
+library(BiocIO)
+library(GenomicRanges)
+library(rtracklayer)
+library(BSgenome.Ecoli.NCBI.20080805)
+
+seqnames(BSgenome.Ecoli.NCBI.20080805)
+
+BSgenome.Ecoli.NCBI.20080805$NC_008253->e_coli_1
+coli<-e_coli_1[1:300]
+coli
+
+a<-0
+cont<-1
+
+while(a<100){
+  if(coli[cont]==DNAString("A")){
+    a<-a+1
+  }
+  cont<-cont+1#Es el que va a recorrerse en la secuencia
+  print()
+}
+
+
+insulinitas<-""
+library(ggplot2)
+library(ggmsa)
