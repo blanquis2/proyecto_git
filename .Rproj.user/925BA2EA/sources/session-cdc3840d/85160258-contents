@@ -1,3 +1,25 @@
 
                           #Alineamiento de globinas#
+
+
 #cargar los paquetes
+library(BSgenome)
+library(BiocIO)
+library(GenomicRanges)
+library(rtracklayer)
+library(msa)
+
+#agregar el archivo al doc
+
+globinas<-readDNAStringSet("datos/DivergentGlobins.fasta")
+globinas
+
+#alineamiento
+
+clustal_globinas<-msa(globinas,method = "ClustalW")
+clustal_globinas
+
+muscle_globinas<-msa(globinas, method = "Muscle")
+muscle_globinas
+
+#árboles

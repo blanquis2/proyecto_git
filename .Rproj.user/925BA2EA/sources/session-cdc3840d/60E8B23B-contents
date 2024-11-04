@@ -1,0 +1,43 @@
+
+#Globinas#
+
+library(BSgenome)
+library(BiocIO)
+library(GenomicRanges)
+library(rtracklayer)
+library(msa)
+
+globins<-readAAStringSet("C:/Users/52427/Downloads/DivergentGlobins.fasta")
+globins
+alineamiento2<-msa(globins)
+alineamiento2
+
+#Ejercicio2#
+
+x<-rnorm(1000)
+
+#Cambiar la salida de guardado de ciertos archivos#
+pdf("C:/Users/52427/OneDrive - UAQ/Documentos/bioinfo_segundo_parcial/Ayudas_bioinfo/grafica_prueba.pdf")
+x<-rnorm(1000)
+hist(x,col = "orange")#Cada vez que lo corras va a agregarlo así sea lo mismo con modificaciones#
+#Puedes ir enviando los resultados parciales a otra carpeta#
+dev.off()#Apaga el cambio de salida
+
+#Ejercicio 3#
+mtcars
+#Los datos crudos no se modifican#
+cars2<-mtcars[4,3]
+View(cars2)
+
+#Ejercicio 4#
+#Generar un nvo script
+#Dos bases de datos adicionales que divida en cadesna positiva y negativa con la variable locus,#
+#Boxplot#
+
+proteinas<-read.csv("C:/Users/52427/Downloads/proteins_167_161521.csv")
+proteinas
+View(proteinas)
+
+install.packages("ggplot2")
+install.packages("phangorn")
+library(phangorn)
