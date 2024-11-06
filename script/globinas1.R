@@ -49,7 +49,19 @@ pdf("resultado/arboles.pdf")
 
 arbol1<-nj(mat1)#con clustalw
 arbol1
+plot(arbol1)
 arbol2<-nj(mat2)#con muscle
 arbol2
-
+plot(arbol2)
 dev.off()
+
+#Ejercicios con ggtree#
+install.packages("ggtree")
+library(ggtree)
+
+class(arbol1)#verificar que la clase sea phylo
+class(arbol2)
+
+
+p_iris <- ggtree(arbol1, layout = 'circular', branch.length='none')
+p_iris
