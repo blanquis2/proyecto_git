@@ -1,27 +1,27 @@
 {
-    "id": "8DE012C4",
-    "path": "~/proyecto_git/presentación1.Rmd",
-    "project_path": "presentación1.Rmd",
+    "id": "8B76C2E5",
+    "path": "~/proyecto_git/arbolito_pp.Rmd",
+    "project_path": "arbolito_pp.Rmd",
     "type": "r_markdown",
-    "hash": "43249279",
+    "hash": "1769981959",
     "contents": "",
-    "dirty": true,
-    "created": 1730910060790.0,
+    "dirty": false,
+    "created": 1730929800111.0,
     "source_on_save": false,
     "relative_order": 7,
     "properties": {
         "tempName": "Untitled1",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "82,9",
-        "scrollLine": "69"
+        "cursorPosition": "2,23",
+        "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1730910166,
+    "lastKnownWriteTime": 1730930049,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1730910350604,
+    "last_content_update": 1730930049482,
     "read_only": false,
     "read_only_alternatives": []
 }

@@ -2,112 +2,26 @@
 title: "Presentación1"
 author: "bo"
 date: "2024-11-06"
-output: powerpoint_presentation
+output:
+  slidy_presentation: default
+  powerpoint_presentation: default
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 ##Presentación1
 
-```{r, echo = TRUE}
- #Alineamiento de globinas#
+```{r script, echo=FALSE}
 
+arbolito<-rtree(10)
+ggtree(arbolito)+
+    geom_tiplab(colour="bisque2")+
+  geom_nodepoint(color="#b5e521", alpha=1/4, size=10)+ 
+  geom_tippoint(color="#FDAC4F", shape=8, size=3)
 
-#cargar los paquetes
-library(BSgenome)
-library(BiocIO)
-library(GenomicRanges)
-library(rtracklayer)
-library(msa)
-
-#agregar el archivo al doc
-
-globinas<-readDNAStringSet("datos/DivergentGlobins.fasta")
-globinas
-
-#alineamiento
-
-clustal_globinas<-msa(globinas,method = "ClustalW")
-clustal_globinas
-
-muscle_globinas<-msa(globinas, method = "Muscle")
-muscle_globinas
-
-#árboles
-
-#cargar el paquete
-
-library(ape)
-
-install.packages("seqinr")
-library(seqinr)
-
-#Cambiar el tipo de objeto#
-
-globinas1<-msaConvert(clustal_globinas,type="seqinr::alignment")
-globinas1
-
-
-globinas2<-msaConvert(muscle_globinas,type="seqinr::alignment")
-globinas2
-
-#hacer las matrices de distancias
-mat1<-dist.alignment(globinas1)
-mat2<-dist.alignment(globinas2)
-  
-#árbol#
-pdf("resultado/arboles.pdf")
-
-arbol1<-nj(mat1)#con clustalw
-arbol1
-plot(arbol1)
-arbol2<-nj(mat2)#con muscle
-arbol2
-plot(arbol2)
-dev.off()
-
-#Ejercicios con ggtree#
-install.packages("ggtree")
-library(ggtree)
-
-class(arbol1)#verificar que la clase sea phylo
-class(arbol2)
-
-
-arbolito1<- ggtree(arbol1, layout = 'circular', branch.length='none')+
-  geom_tiplab(colour="bisque3")
-arbolito1
-
-###ggtree
-
-#asignar nombres
-class(arbolito)
-str(arbol1)
-
-#arbolito1 
-ggsave("resultado/arbolclustalw.png")
-arbolito1<- ggtree(arbol1, layout = 'circular', branch.length='none')+
-  geom_tiplab(colour="bisque3")+
-  geom_point(aes(shape=isTip, color=isTip), size=3)
-  
-arbolito1
-dev.off()
-
-##arbolito2
-ggsave("resultado/arbolmuscle.png")
-arbolito2<- ggtree(arbol2, layout = 'fan', branch.length='none')+
-  geom_tiplab(colour="bisque2")+
-  geom_nodepoint(color="#b5e521", alpha=1/4, size=10) 
-arbolito2 + geom_tippoint(color="#FDAC4F", shape=8, size=3)
-arbolito2
 
 ```
 
-## Slide with Plot
+## Imagen
 
-```{r pressure}
-plot(pressure)
+```{r imagen, echo=TRUE}
+
 ```
 
