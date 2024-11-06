@@ -63,8 +63,9 @@ class(arbol1)#verificar que la clase sea phylo
 class(arbol2)
 
 
-p_iris <- ggtree(arbol1, layout = 'circular', branch.length='none')
-p_iris
+arbolito1<- ggtree(arbol1, layout = 'circular', branch.length='none')+
+  geom_tiplab(colour="bisque3")
+arbolito1
 
 ###ggtree
 
@@ -88,3 +89,15 @@ ggsave("resultado/arbolito.png")#elegir el formato favorito
 
 #asignar nombres
 class(arbolito)
+
+#arbolito1 
+ggsave("resultado/arbolclustalw.png")
+arbolito1<- ggtree(arbol1, layout = 'circular', branch.length='none')+
+  geom_tiplab(colour="bisque3")
+arbolito1
+dev.off()
+##arbolito2
+ggsave("resultado/arbolmuscle.png")
+arbolito2<- ggtree(arbol2, layout = 'circular', branch.length='none')+
+  geom_tiplab(colour="bisque2")
+arbolito2
