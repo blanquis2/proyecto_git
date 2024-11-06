@@ -65,3 +65,26 @@ class(arbol2)
 
 p_iris <- ggtree(arbol1, layout = 'circular', branch.length='none')
 p_iris
+
+###ggtree
+
+#Árbol random
+
+plot(rtree(10))->arbolito
+
+#Se puede personalizar agregando capas
+
+ggtree(arbolito)+
+  geom_tiplab(size=5, colour="bisque2")
+
+#resaltar clados
+geom_cladelab()
+
+#señalar con color ciertos clados
+geom_hilight()
+
+#guadar el gráfico
+ggsave("resultado/arbolito.png")#elegir el formato favorito
+
+#asignar nombres
+class(arbolito)
