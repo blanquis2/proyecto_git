@@ -89,15 +89,45 @@ ggsave("resultado/arbolito.png")#elegir el formato favorito
 
 #asignar nombres
 class(arbolito)
+str(arbol1)
 
 #arbolito1 
 ggsave("resultado/arbolclustalw.png")
 arbolito1<- ggtree(arbol1, layout = 'circular', branch.length='none')+
-  geom_tiplab(colour="bisque3")
+  geom_tiplab(colour="bisque3")+
+  geom_point(aes(shape=isTip, color=isTip), size=3)
+  
 arbolito1
 dev.off()
+
 ##arbolito2
 ggsave("resultado/arbolmuscle.png")
-arbolito2<- ggtree(arbol2, layout = 'circular', branch.length='none')+
-  geom_tiplab(colour="bisque2")
+arbolito2<- ggtree(arbol2, layout = 'fan', branch.length='none')+
+  geom_tiplab(colour="bisque2")+
+  geom_nodepoint(color="#b5e521", alpha=1/4, size=10) 
+arbolito2 + geom_tippoint(color="#FDAC4F", shape=8, size=3)
 arbolito2
+dev.off()
+
+#Prueba
+prueba1<- ggtree(arbol1) + geom_tippoint(aes(size = 3), x = arbol$Nnode, shape = 1) + 
+  geom_tippoint(aes(size = tarsusL), x=arbol$tip.label[1], shape = 1) + 
+  geom_tippoint(aes(size = culmenL), x = arbol$tip.label[2], shape = 1) + 
+  geom_tippoint(aes(size = beakD),   x = arbol$tip.label[3], shape = 1) + 
+  geom_tippoint(aes(size = gonysW),  x = arbol$tip.label[4], shape = 1) +
+  geom_tippoint(aes(size = gonysW),  x = arbol$tip.label[5], shape = 1)+ 
+  scale_size_continuous(range = c(3,12), name="globinas") + 
+  geom_text(aes(x = x, y = 0, label = lab), angle = 45) +
+  geom_tiplab(offset = 1.3) + xlim(0, 3) +
+  theme(legend.position = c(.1, .75)) + vexpand(.05, -1) 
+prueba1  #no
+
+
+prueba2<-ggtree(arbol1,layout="fan", open.angle=120)
+prueba2+
+  geom_rootpoint(colour="red3",size=3, alpha=.8)+
+  geom_tiplab(colour="blue4")+
+  geom_treescale(x=0, y=40, width=1, color='purple3')
+
+prueba3<-ggtree(arbol1,layout_inward_circular(xlim=5))
+prueba3#no sale

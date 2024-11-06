@@ -1,5 +1,18 @@
+---
+title: "Presentación1"
+author: "bo"
+date: "2024-11-06"
+output: powerpoint_presentation
+---
 
-                          #Alineamiento de globinas#
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Presentación1
+
+```{r, echo = TRUE}
+ #Alineamiento de globinas#
 
 
 #cargar los paquetes
@@ -69,24 +82,6 @@ arbolito1
 
 ###ggtree
 
-#Árbol random
-
-plot(rtree(10))->arbolito
-
-#Se puede personalizar agregando capas
-
-ggtree(arbolito)+
-  geom_tiplab(size=5, colour="bisque2")
-
-#resaltar clados
-geom_cladelab()
-
-#señalar con color ciertos clados
-geom_hilight()
-
-#guadar el gráfico
-ggsave("resultado/arbolito.png")#elegir el formato favorito
-
 #asignar nombres
 class(arbolito)
 str(arbol1)
@@ -102,31 +97,17 @@ dev.off()
 
 ##arbolito2
 ggsave("resultado/arbolmuscle.png")
-arbolito2<- ggtree(arbol2, layout = 'circular', branch.length='none')+
+arbolito2<- ggtree(arbol2, layout = 'fan', branch.length='none')+
   geom_tiplab(colour="bisque2")+
-  geom_point(aes(shape=isTip, color=isTip), size=3)
+  geom_nodepoint(color="#b5e521", alpha=1/4, size=10) 
+arbolito2 + geom_tippoint(color="#FDAC4F", shape=8, size=3)
 arbolito2
-dev.off()
 
-#Prueba
-prueba1<- ggtree(arbol1) + geom_tippoint(aes(size = 3), x = arbol$Nnode, shape = 1) + 
-  geom_tippoint(aes(size = tarsusL), x=arbol$tip.label[1], shape = 1) + 
-  geom_tippoint(aes(size = culmenL), x = arbol$tip.label[2], shape = 1) + 
-  geom_tippoint(aes(size = beakD),   x = arbol$tip.label[3], shape = 1) + 
-  geom_tippoint(aes(size = gonysW),  x = arbol$tip.label[4], shape = 1) +
-  geom_tippoint(aes(size = gonysW),  x = arbol$tip.label[5], shape = 1)+ 
-  scale_size_continuous(range = c(3,12), name="globinas") + 
-  geom_text(aes(x = x, y = 0, label = lab), angle = 45) +
-  geom_tiplab(offset = 1.3) + xlim(0, 3) +
-  theme(legend.position = c(.1, .75)) + vexpand(.05, -1) 
-prueba1  #no
+```
 
+## Slide with Plot
 
-prueba2<-ggtree(arbol1,layout="fan", open.angle=120)
-prueba2+
-  geom_rootpoint(colour="red3",size=3, alpha=.8)+
-  geom_tiplab(colour="blue4")+
-  geom_treescale(x=0, y=40, width=1, color='purple3')
+```{r pressure}
+plot(pressure)
+```
 
-prueba3<-ggtree(arbol1,layout_inward_circular(xlim=5))
-prueba3#no sale

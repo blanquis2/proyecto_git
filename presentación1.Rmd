@@ -1,0 +1,24 @@
+---
+title: "Presentación1"
+author: "bo"
+date: "2024-11-06"
+output: powerpoint_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Presentación1
+
+```{r, echo = TRUE}
+
+
+```
+
+## Slide with Plot
+
+```{r pressure}
+plot(pressure)
+```
+
