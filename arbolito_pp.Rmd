@@ -2,34 +2,34 @@
 title: "Mi_arbolito"
 author: "Blanca Osornio"
 date: "2024-11-06"
-output: ioslides_presentation
+output: slidy_presentation
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
 
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+## Poner una imagen en una presentación | Arbolito expectativa
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+![Arbolito_expectativa](https://elartedeldato.com/blog/como-hacer-arbol-filogenetico/arbol.png)
 
-## Slide with Bullets
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+## Código de un arbolito random
 
-## Slide with R Output
+Hay diversas maneras de hacer árboles filogeneticos en R, pero el paquete ggtree
+ofrece múltiples opciones para una mejor estética de estos.
 
-```{r cars, echo = TRUE}
-summary(cars)
-```
+## Arbolito realidad
 
-## Slide with Plot
+```{r script_imagen, echo=TRUE}
+library(ggtree)
 
-```{r pressure}
-plot(pressure)
+arbolito<-rtree(20)
+
+ggtree(arbolito)+
+  geom_tiplab(colour="bisque3")+
+  geom_nodepoint(color="#b5e521", alpha=1/4, size=10)+ 
+  geom_tippoint(color="#FDAC4F", shape=8, size=3)
 ```
 

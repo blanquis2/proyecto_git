@@ -62,11 +62,6 @@ library(ggtree)
 class(arbol1)#verificar que la clase sea phylo
 class(arbol2)
 
-
-arbolito1<- ggtree(arbol1, layout = 'circular', branch.length='none')+
-  geom_tiplab(colour="bisque3")
-arbolito1
-
 ###ggtree
 
 #Árbol random
@@ -119,8 +114,6 @@ prueba1<- ggtree(arbol1) + geom_tippoint(aes(size = 3), x = arbol$Nnode, shape =
   geom_text(aes(x = x, y = 0, label = lab), angle = 45) +
   geom_tiplab(offset = 1.3) + xlim(0, 3) +
   theme(legend.position = c(.1, .75)) + vexpand(.05, -1) 
-prueba1  #no
-
 
 prueba2<-ggtree(arbol1,layout="fan", open.angle=120)
 prueba2+
@@ -130,3 +123,9 @@ prueba2+
 
 prueba3<-ggtree(arbol1,layout_inward_circular(xlim=5))
 prueba3#no sale
+
+arbolito<-rtree(20)
+
+ggtree(arbolito)+
+  geom_tiplab(colour="bisque3")+
+  geom_point(aes(shape=isTip, color=isTip), size=3)
