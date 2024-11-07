@@ -1,2 +1,2 @@
 # proyecto_git
- Alineamineto de globinas
+ Alineamineto y árboles de globinas
